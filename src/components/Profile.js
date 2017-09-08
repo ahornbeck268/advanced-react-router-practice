@@ -1,10 +1,11 @@
 import React from "react";
 import {connect} from "react-redux";
+// import {Link} from "react-router-dom";
 
 function Profile(props) {
-  const userId = 0;
-  const user = props.users.find(u => u.id == userId) || {};
-  return (   
+  const userId = props.match.params.id;
+  const user = props.users.find(u => u.id === userId) || {};
+  return (
     <div>
       <h3>{user.firstName} {user.lastName}</h3>
       <h4>{user.occupation}</h4>
@@ -18,4 +19,3 @@ function Profile(props) {
 export default connect(function (state) {
   return {users: state.users};
 })(Profile);
-
